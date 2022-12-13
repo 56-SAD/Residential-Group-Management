@@ -32,16 +32,13 @@ public class HoKhauManagement {
 	}
 	
 	public void getListOfHoKhau(HoKhau[] hoKhaus) {
-		int numOfAccounts = 0;
 		connectSQLServer();
 		try {
-			PreparedStatement pstm = conn.prepareStatement("select * FROM users");
+			PreparedStatement pstm = conn.prepareStatement("select * FROM HoKhau");
 			ResultSet rs = pstm.executeQuery();
-			
+			int numOfHoKhau = 0;
 			while(rs.next()) {
-				
 			}
-			numOfAccounts -= 1;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

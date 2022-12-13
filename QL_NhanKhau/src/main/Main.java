@@ -1,19 +1,29 @@
 package main;
 
-import Account.AccountManagement;
-import qL_NhanKhau.HoKhauManagement;
+import java.awt.EventQueue;
+
+import panels.LoginPanel;
+import panels.MainPanel;
 
 public class Main {
-
+	public static int statusPanel = 1;
+	public final int loginStatus = 1;
+	public final int hienThiNhanKhauStatus = 2;
+	public final int themNhanKhauStatus = 3;
+	
 	public static void main(String[] args) {
 		
-		AccountManagement accountM = new AccountManagement();
-		accountM.getListOfAccounts(accountM.accounts);
-		for(int i = 0; i< accountM.accounts.length; i++) {
-			if(accountM.accounts[i] != null)
-				System.out.println(accountM.accounts[i].getUsername() + " " + accountM.accounts[i].getPasswords());
-		}
-		
-		HoKhauManagement hoKhauM = new HoKhauManagement();
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					LoginPanel login = new LoginPanel();
+					MainPanel main = new MainPanel(login);
+					
+					main.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
 	}
 }

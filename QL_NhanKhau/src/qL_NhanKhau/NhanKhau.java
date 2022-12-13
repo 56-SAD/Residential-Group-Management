@@ -15,6 +15,7 @@ public class NhanKhau {
 	private Date ngayCap;
 	private String noiCap;
 	private Date ngayDangKyThuongTru;
+	private String diaChiThuongTruTruoc;
 	private String quanHeChuHo;
 	
 	public NhanKhau(
@@ -30,6 +31,7 @@ public class NhanKhau {
 			Date ngayCap,
 			String noiCap,
 			Date ngayDangKyThuongTru,
+			String diaChiThuongTruTruoc,
 			String quanHeChuHo
 			) {
 		this.ten = ten;
@@ -44,6 +46,7 @@ public class NhanKhau {
 		this.ngayCap = ngayCap;
 		this.noiCap = noiCap;
 		this.ngayDangKyThuongTru = ngayDangKyThuongTru;
+		this.diaChiThuongTruTruoc = diaChiThuongTruTruoc;
 		this.quanHeChuHo = quanHeChuHo;
 	}
 
@@ -149,6 +152,14 @@ public class NhanKhau {
 
 	public void setQuanHeChuHo(String quanHeChuHo) {
 		this.quanHeChuHo = quanHeChuHo;
+	}
+
+	public String getDiaChiThuongTruTruoc() {
+		return diaChiThuongTruTruoc;
+	}
+
+	public void setDiaChiThuongTruTruoc(String diaChiThuongTruTruoc) {
+		this.diaChiThuongTruTruoc = diaChiThuongTruTruoc;
 	}
 	
 	

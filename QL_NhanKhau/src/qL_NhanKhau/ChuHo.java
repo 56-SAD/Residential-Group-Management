@@ -6,9 +6,9 @@ public class ChuHo extends NhanKhau {
 
 	public ChuHo(String ten, String biDanh, Date ngaySinh, String noiSinh, String queQuan, String danToc,
 			String ngheNghiep, String noiLamViec, String CCCD, Date ngayCap, String noiCap, Date ngayDangKyThuongTru,
-			String quanHeChuHo) {
+			String diaChiThuongTruTruoc, String quanHeChuHo) {
 		super(ten, biDanh, ngaySinh, noiSinh, queQuan, danToc, ngheNghiep, noiLamViec, CCCD, ngayCap, noiCap,
-				ngayDangKyThuongTru, "Chủ Hộ");
+				ngayDangKyThuongTru, diaChiThuongTruTruoc, "Chủ Hộ");
 		
 	}
 	
