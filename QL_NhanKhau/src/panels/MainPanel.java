@@ -17,7 +17,9 @@ import java.awt.Toolkit;
 public class MainPanel extends JFrame {
 
 	LoginPanel login;
-	private ThemNhanKhau themNhanKhauPanel;
+	private ThemNhanKhau tabThemNhanKhau;
+	private HienThiHoKhau tabHienThiHoKhau;
+	JTabbedPane tab;
 	
 	private static final long serialVersionUID = 2730626704474033277L;
 	JTabbedPane menu;
@@ -28,19 +30,19 @@ public class MainPanel extends JFrame {
 	public MainPanel(LoginPanel login) {
 		this.login = login;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1200, 900);
+		setBounds(100, 100, 900, 700);
 		getContentPane().setLayout(null);
 		setTitle("Quản Lý Nhân Khẩu");
 		setIconImage(Toolkit.getDefaultToolkit().getImage("otherResource/icon.png"));
 		setLocationRelativeTo(null);
 		
 		JMenuBar menuBar = new JMenuBar();
-		menuBar.setBounds(0, 0, 1200, 32);
+		menuBar.setBounds(0, 0, 900, 32);
 		getContentPane().add(menuBar);
 		
-		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.setBounds(10, 116, 1180, 620);
-		getContentPane().add(tabbedPane);
+		tab = new JTabbedPane(JTabbedPane.TOP);
+		tab.setBounds(10, 116, 870, 530);
+		getContentPane().add(tab);
 		
 	/* 
 	 * SYSTEM Management
@@ -50,6 +52,12 @@ public class MainPanel extends JFrame {
 		menuBar.add(HeThong);
 		
 		JMenuItem DangXuat = new JMenuItem("Đăng Xuất");
+		DangXuat.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				login.setVisible(true);
+				dispose();
+			}
+		});
 		DangXuat.setIcon(new ImageIcon("otherResource/LogOut16.png"));
 		HeThong.add(DangXuat);
 		
@@ -75,15 +83,11 @@ public class MainPanel extends JFrame {
 		QuanLy.add(QuanLyNhanKhau);
 		QuanLyNhanKhau.setIcon(new ImageIcon("otherResource/NhanKhau16.png"));
 	// Event NhanKhau
-//		QuanLyNhanKhau.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent e) {
-//				if(themNhanKhauPanel == null) {
-//					themNhanKhauPanel = new ThemNhanKhau();
-//					tabbedPane.addTab("Quản Lý Nhân Khẩu", new ImageIcon("otherResource/NhanKhau16.png"), themNhanKhauPanel, "Quản Lý Nhân Khẩu");
-//				}
-//				tabbedPane.setSelectedComponent(themNhanKhauPanel);
-//			}
-//		});
+		QuanLyNhanKhau.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				addTabThemNhanKhau();
+			}
+		});
 		
 		JSeparator separator_1 = new JSeparator();
 		QuanLy.add(separator_1);
@@ -114,18 +118,34 @@ public class MainPanel extends JFrame {
 	 */
 		
 		JToolBar toolBar = new JToolBar();
-		toolBar.setBounds(0, 32, 1180, 77);
+		toolBar.setBounds(0, 32, 890, 77);
 		getContentPane().add(toolBar);
 		
 		JButton dangXuatButton = new JButton("Đăng Xuất");
+		dangXuatButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				login.setVisible(true);
+				dispose();
+			}
+		});
 		dangXuatButton.setIcon(new ImageIcon("otherResource/LogOut48.png"));
 		toolBar.add(dangXuatButton);
 		
 		JButton quanLyHoKhauButton = new JButton("Quản Lý Hộ Khẩu");
+		quanLyHoKhauButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				addTabHienThiHoKhau();
+			}
+		});
 		quanLyHoKhauButton.setIcon(new ImageIcon("otherResource/HoKhau48.png"));
 		toolBar.add(quanLyHoKhauButton);
 		
 		JButton quanLyNhanKhauButton = new JButton("Quản Lý Nhân Khẩu");
+		quanLyNhanKhauButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				addTabThemNhanKhau();
+			}
+		});
 		quanLyNhanKhauButton.setIcon(new ImageIcon("otherResource/NhanKhau48.png"));
 		toolBar.add(quanLyNhanKhauButton);
 		
@@ -145,9 +165,25 @@ public class MainPanel extends JFrame {
 		JMenuItem menuItem = new JMenuItem("New menu item");
 		menuItem.setBounds(0, 43, 137, 26);
 		getContentPane().add(menuItem);
-		
-		
-		
-		
+	
 	}
+	
+	/*
+	 * Event
+	 */
+		void addTabThemNhanKhau() {
+			if(tabThemNhanKhau == null) {
+				tabThemNhanKhau = new ThemNhanKhau();
+				tab.addTab("Quản Lý Nhân Khẩu", new ImageIcon(), tabThemNhanKhau, "Quản Lý Nhân Khẩu");
+			}
+			tab.setSelectedComponent(tabThemNhanKhau);
+		}
+		
+		void addTabHienThiHoKhau() {
+			if(tabHienThiHoKhau == null) {
+				tabHienThiHoKhau = new HienThiHoKhau();
+				tab.addTab("Quản Lý Hộ Khẩu", new ImageIcon(), tabHienThiHoKhau, "Quản Lý Hộ Khẩu");
+			}
+		}
+		
 }
