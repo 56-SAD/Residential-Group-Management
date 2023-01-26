@@ -17,6 +17,9 @@ public class NhanKhau {
 	private Date ngayDangKyThuongTru;
 	private String diaChiThuongTruTruoc;
 	private String quanHeChuHo;
+	private Date ngayChuyen;
+	private String noiChuyen;
+	private String ghiChu;
 	
 	public NhanKhau(
 			String ten,
@@ -162,6 +165,28 @@ public class NhanKhau {
 		this.diaChiThuongTruTruoc = diaChiThuongTruTruoc;
 	}
 	
-	
+	public Date getNgayChuyen() {
+		return ngayChuyen;
+	}
+
+	public void setNgayChuyen(Date ngayChuyen) {
+		this.ngayChuyen = ngayChuyen;
+	}
+
+	public String getNoiChuyen() {
+		return noiChuyen;
+	}
+
+	public void setNoiChuyen(String noiChuyen) {
+		this.noiChuyen = noiChuyen;
+	}
+
+	public String getGhiChu() {
+		return ghiChu;
+	}
+
+	public void setGhiChu(String ghiChu) {
+		this.ghiChu = ghiChu;
+	}
 	
 }

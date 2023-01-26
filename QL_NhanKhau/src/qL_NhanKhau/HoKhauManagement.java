@@ -8,7 +8,7 @@ import java.sql.SQLException;
 
 public class HoKhauManagement {
 
-	HoKhau[] hoKhaus = new HoKhau[100];
+	public HoKhau[] hoKhaus = new HoKhau[100];
 	
 	Connection conn = null;
 	public void connectSQLServer() {
@@ -34,11 +34,16 @@ public class HoKhauManagement {
 	public void getListOfHoKhau(HoKhau[] hoKhaus) {
 		connectSQLServer();
 		try {
-			PreparedStatement pstm = conn.prepareStatement("select * FROM HoKhau");
+			PreparedStatement pstm = conn.prepareStatement("select hk.ID_HoKhau, hk.ID_HoKhau,"
+					+ " nk.Ten, hk.DiaChi from HoKhau hk, NhanKhau nk "
+					+ "where hk.ID_ChuHo = nk.ID");
 			ResultSet rs = pstm.executeQuery();
 			int numOfHoKhau = 0;
 			while(rs.next()) {
+				hoKhaus[numOfHoKhau] = new HoKhau(rs.getInt("ID_HoKhau"), rs.getInt("SoHoKhau"), rs.getString("Ten"), rs.getString("DiaChi"));
+				numOfHoKhau++;
 			}
+			numOfHoKhau--;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

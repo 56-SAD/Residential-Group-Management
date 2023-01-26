@@ -2,8 +2,8 @@ package main;
 
 import java.awt.EventQueue;
 
-import panels.LoginPanel;
-import panels.MainPanel;
+import layouts.Login_Panel;
+import layouts.Main_Panel;
 
 public class Main {
 	public static int statusPanel = 1;
@@ -16,8 +16,8 @@ public class Main {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					LoginPanel login = new LoginPanel();
-					MainPanel main = new MainPanel(login);
+					Login_Panel login = new Login_Panel();
+					Main_Panel main = new Main_Panel(login);
 					
 					main.setVisible(true);
 				} catch (Exception e) {
